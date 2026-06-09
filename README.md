@@ -1,8 +1,8 @@
-# Agent Skills
+# Research Skills
 
-A collection of portable [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) — Markdown files that teach an AI coding agent how to perform specialized workflows.
+A collection of portable, research-focused [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) (paper reading & more) — Markdown files that teach an AI coding agent how to perform specialized research workflows.
 
-Each skill uses only the cross-agent standard (`SKILL.md` with `name` + `description` frontmatter and plain Markdown), so the **same skill works in [Cursor](https://cursor.com), [Claude Code](https://www.claude.com/product/claude-code), and other agents** (Codex CLI, Gemini CLI, Copilot, …). Agent-specific frontmatter is intentionally avoided so nothing gets ignored or breaks.
+Each skill uses only the cross-agent standard (`SKILL.md` with `name` + `description` frontmatter and plain Markdown), so the **same skill works in [Cursor](https://cursor.com), [Claude Code](https://www.claude.com/product/claude-code), and beyond** (Codex CLI, Gemini CLI, Copilot, …). Agent-specific frontmatter is intentionally avoided so nothing gets ignored or breaks.
 
 ## Skills
 
