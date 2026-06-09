@@ -23,8 +23,8 @@ A skill is just a directory containing `SKILL.md`. Agents discover skills from t
 ### Option A — one-click installer (recommended)
 
 ```bash
-git clone https://github.com/fangz-cs/cursor-skills.git
-cd cursor-skills
+git clone https://github.com/fangz-cs/research-skills.git
+cd research-skills
 ./install.sh                 # install all skills into every detected agent
 ./install.sh claude          # install all skills into Claude Code only
 ./install.sh cursor reading-papers   # install one skill into Cursor only
@@ -35,11 +35,11 @@ Usage: `./install.sh [cursor|claude|all] [<skill-name>|all]` (both args default 
 ### Option B — manual copy
 
 ```bash
-git clone https://github.com/fangz-cs/cursor-skills.git
+git clone https://github.com/fangz-cs/research-skills.git
 # Cursor
-cp -r cursor-skills/skills/reading-papers ~/.cursor/skills/
+cp -r research-skills/skills/reading-papers ~/.cursor/skills/
 # Claude Code
-cp -r cursor-skills/skills/reading-papers ~/.claude/skills/
+cp -r research-skills/skills/reading-papers ~/.claude/skills/
 ```
 
 After installing, restart (or reload) your agent so it picks up the new skill.
