@@ -1,6 +1,8 @@
-# Cursor Skills
+# Agent Skills
 
-A collection of [Cursor](https://cursor.com) Agent Skills. Skills are Markdown files that teach the Cursor agent how to perform specialized workflows.
+A collection of portable [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) — Markdown files that teach an AI coding agent how to perform specialized workflows.
+
+Each skill uses only the cross-agent standard (`SKILL.md` with `name` + `description` frontmatter and plain Markdown), so the **same skill works in [Cursor](https://cursor.com), [Claude Code](https://www.claude.com/product/claude-code), and other agents** (Codex CLI, Gemini CLI, Copilot, …). Agent-specific frontmatter is intentionally avoided so nothing gets ignored or breaks.
 
 ## Skills
 
@@ -10,34 +12,49 @@ A collection of [Cursor](https://cursor.com) Agent Skills. Skills are Markdown f
 
 ## Installation
 
-Skills are loaded from `~/.cursor/skills/` (personal) or `.cursor/skills/` (per project).
+A skill is just a directory containing `SKILL.md`. Agents discover skills from their own skills folder:
 
-### Install a single skill
+| Agent | Personal (all projects) | Project (per repo) |
+| --- | --- | --- |
+| Cursor | `~/.cursor/skills/` | `.cursor/skills/` |
+| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
+| Other agents | `~/.<agent>/skills/` | `.<agent>/skills/` |
+
+### Option A — one-click installer (recommended)
 
 ```bash
-git clone https://github.com/<your-username>/cursor-skills.git
+git clone https://github.com/fangz-cs/cursor-skills.git
+cd cursor-skills
+./install.sh                 # install all skills into every detected agent
+./install.sh claude          # install all skills into Claude Code only
+./install.sh cursor reading-papers   # install one skill into Cursor only
+```
+
+Usage: `./install.sh [cursor|claude|all] [<skill-name>|all]` (both args default to `all`).
+
+### Option B — manual copy
+
+```bash
+git clone https://github.com/fangz-cs/cursor-skills.git
+# Cursor
 cp -r cursor-skills/skills/reading-papers ~/.cursor/skills/
+# Claude Code
+cp -r cursor-skills/skills/reading-papers ~/.claude/skills/
 ```
 
-### Install all skills
-
-```bash
-git clone https://github.com/<your-username>/cursor-skills.git
-cp -r cursor-skills/skills/* ~/.cursor/skills/
-```
-
-After installing, restart Cursor (or reload the window) so the agent picks up the new skills.
+After installing, restart (or reload) your agent so it picks up the new skill.
 
 ## Usage
 
-Once installed, just ask the agent naturally — for example: "帮我精读这篇论文 <link>". The agent will auto-invoke the relevant skill based on its description.
+Once installed, just ask the agent naturally — for example: "帮我精读这篇论文 <link>". The agent auto-invokes the relevant skill based on its `description`.
 
 ## Repository Layout
 
 ```
-cursor-skills/
+.
 ├── README.md
 ├── LICENSE
+├── install.sh
 └── skills/
     └── <skill-name>/
         └── SKILL.md
@@ -45,9 +62,10 @@ cursor-skills/
 
 ## Adding a New Skill
 
-1. Create a folder `skills/<skill-name>/`.
-2. Add a `SKILL.md` with YAML frontmatter (`name`, `description`).
-3. Add the skill to the table above.
+1. Create a folder `skills/<skill-name>/` (the folder name must match the `name` in frontmatter).
+2. Add `SKILL.md` with YAML frontmatter (`name`, `description`) and Markdown instructions.
+3. For portability, stick to `name` + `description` + plain Markdown; keep `SKILL.md` under ~500 lines and move long reference material into sibling files.
+4. Add the skill to the table above.
 
 ## License
 
