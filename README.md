@@ -8,7 +8,7 @@ Each skill uses only the cross-agent standard (`SKILL.md` with `name` + `descrip
 
 | Skill | Description |
 | --- | --- |
-| [`reading-papers`](skills/reading-papers/) | Critically read and analyze an academic paper across six dimensions (motivation, problem, method/novelty, related work, citation potential, future work) and produce a structured bilingual reading note. |
+| [`reading-papers`](skills/reading-papers/) | Critically read and analyze a paper across six dimensions (motivation, problem, method/novelty, experiments/evaluation, related work, future work) into a structured bilingual reading note — plus a lightweight verdict mode, a **Synthesis mode** to weave previously-read papers into a field map, and a **Survey mode** for end-to-end literature surveys. |
 
 ## Installation
 
@@ -57,7 +57,8 @@ Once installed, just ask the agent naturally — for example: "帮我精读这�
 ├── install.sh
 └── skills/
     └── <skill-name>/
-        └── SKILL.md
+        ├── SKILL.md
+        └── references/        # optional: long reference material kept out of SKILL.md
 ```
 
 ## Adding a New Skill
